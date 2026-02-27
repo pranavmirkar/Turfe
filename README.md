@@ -98,15 +98,3 @@ Payment integration (if required)
 Mobile app version
 
 Role-based access control
-
-📷 Project Preview (Optional Section)
-
-You can add screenshots of:
-
-Login Page
-
-Calendar View
-
-Booking Form
-
-Confirmation Page
