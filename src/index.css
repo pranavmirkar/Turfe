@@ -1,0 +1,120 @@
+/* ─────────────────────────────────────────
+   GROUNDPLAY — GLOBAL CSS
+───────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0d0d0d;
+  --bg-2: #111111;
+  --bg-3: #161616;
+  --off-white: #f0ede8;
+  --white: #ffffff;
+  --accent: #b5f000;
+  --accent-dim: #8fba00;
+  --muted: #5a5a5a;
+  --border: rgba(255, 255, 255, 0.08);
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--off-white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  overflow-y: auto !important;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* ── Reveal animation class ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Keyframes ── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollPulse {
+
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scaleY(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}

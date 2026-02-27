@@ -1,0 +1,444 @@
+.page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+/* ── Header ── */
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    color: var(--off-white);
+    letter-spacing: 0.05em;
+}
+
+.sub {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+}
+
+.newBookBtn {
+    flex-shrink: 0;
+    padding: 0.7rem 1.5rem;
+    border-radius: 100px;
+    background: var(--accent);
+    color: #0d0d0d;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    white-space: nowrap;
+    margin-top: 0.5rem;
+}
+
+.newBookBtn:hover {
+    background: #fff;
+    transform: translateY(-2px);
+}
+
+/* ── Stats ── */
+.statsRow {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.statPill {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    background: #161616;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+}
+
+.statNum {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--off-white);
+    line-height: 1;
+}
+
+.statLabel {
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* ── Toolbar ── */
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Search */
+.searchWrap {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    pointer-events: none;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 0.7rem 2.5rem 0.7rem 2.4rem;
+    background: #161616;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--off-white);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    transition: border-color 0.2s;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.searchInput::placeholder {
+    color: var(--muted);
+}
+
+.clearSearch {
+    position: absolute;
+    right: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 0.75rem;
+    padding: 2px;
+}
+
+/* Filter tabs */
+.filterTabs {
+    display: flex;
+    gap: 0.4rem;
+    background: #161616;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.3rem;
+}
+
+.filterTab {
+    padding: 0.45rem 1rem;
+    border-radius: 100px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--font-body);
+}
+
+.filterTab:hover {
+    color: var(--off-white);
+}
+
+.filterActive {
+    background: var(--accent) !important;
+    color: #0d0d0d !important;
+}
+
+/* ── Card list ── */
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    background: #161616;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition: border-color 0.2s, transform 0.2s;
+    animation: cardIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card:hover {
+    border-color: rgba(181, 240, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Icon */
+.cardIcon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: #1e1e1e;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+}
+
+/* Body */
+.cardBody {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+}
+
+.cardTop {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.bookingId {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: var(--font-body);
+}
+
+.statusBadge {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 100px;
+    flex-shrink: 0;
+}
+
+.cardMid {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sportName {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--off-white);
+}
+
+.dot {
+    color: var(--muted);
+    font-size: 1rem;
+}
+
+.groundName {
+    font-size: 0.9rem;
+    color: rgba(240, 237, 232, 0.6);
+}
+
+.cardInfo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.infoChip {
+    font-size: 0.72rem;
+    color: var(--muted);
+    background: #1c1c1c;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.2rem 0.65rem;
+}
+
+/* Actions */
+.cardActions {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.cancelBtn {
+    padding: 0.45rem 1.1rem;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 79, 109, 0.35);
+    background: transparent;
+    color: #ff4f6d;
+    font-size: 0.74rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--font-body);
+}
+
+.cancelBtn:hover {
+    background: rgba(255, 79, 109, 0.1);
+    border-color: #ff4f6d;
+}
+
+.confirmCancel {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.confirmText {
+    font-size: 0.74rem;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.btnYes {
+    padding: 0.35rem 0.85rem;
+    border-radius: 100px;
+    border: none;
+    background: #ff4f6d;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: opacity 0.2s;
+}
+
+.btnYes:hover {
+    opacity: 0.85;
+}
+
+.btnNo {
+    padding: 0.35rem 0.85rem;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: all 0.2s;
+}
+
+.btnNo:hover {
+    color: var(--off-white);
+    border-color: var(--off-white);
+}
+
+/* ── Empty state ── */
+.empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 4rem 2rem;
+    background: #161616;
+    border: 1px dashed var(--border);
+    border-radius: 18px;
+    text-align: center;
+}
+
+.emptyIcon {
+    font-size: 3rem;
+}
+
+.emptyTitle {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--off-white);
+    letter-spacing: 0.04em;
+}
+
+.emptySub {
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.emptyBtn {
+    margin-top: 0.5rem;
+    padding: 0.65rem 1.75rem;
+    border-radius: 100px;
+    background: var(--accent);
+    color: #0d0d0d;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    transition: all 0.2s;
+}
+
+.emptyBtn:hover {
+    background: #fff;
+    transform: translateY(-2px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .page {
+        padding: 1.5rem 1rem 3rem;
+    }
+
+    .header {
+        flex-direction: column;
+    }
+
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filterTabs {
+        flex-wrap: wrap;
+        border-radius: 12px;
+    }
+
+    .card {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .cardActions {
+        width: 100%;
+        align-items: flex-start;
+    }
+}

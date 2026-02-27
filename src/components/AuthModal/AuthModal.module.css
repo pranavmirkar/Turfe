@@ -1,0 +1,531 @@
+/* ─────────────────────────────────────────
+   AUTH MODAL — SPORTY ANIMATIONS
+───────────────────────────────────────── */
+
+/* ── Keyframes ── */
+
+/* Backdrop fade */
+@keyframes backdropIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Speed-flash stripe that fires just before modal appears */
+@keyframes speedFlash {
+    0% {
+        transform: translateX(-110%) skewX(-12deg);
+        opacity: 0.7;
+    }
+
+    40% {
+        transform: translateX(20%) skewX(-12deg);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translateX(110%) skewX(-12deg);
+        opacity: 0;
+    }
+}
+
+/* Main modal kick-in: shoots up from below with bounce overshoot */
+@keyframes kickIn {
+    0% {
+        transform: translateY(90px) scale(0.88) rotate(-1.5deg);
+        opacity: 0;
+    }
+
+    55% {
+        transform: translateY(-14px) scale(1.025) rotate(0.4deg);
+        opacity: 1;
+    }
+
+    75% {
+        transform: translateY(7px) scale(0.99) rotate(-0.1deg);
+    }
+
+    88% {
+        transform: translateY(-3px) scale(1.005);
+    }
+
+    100% {
+        transform: translateY(0) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* Content stagger slides */
+@keyframes staggerUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tab indicator slide */
+@keyframes tabSlide {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/* ── Overlay ── */
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(5, 5, 5, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: backdropIn 0.35s ease forwards;
+}
+
+/* ── Speed-flash stripe ── */
+.speedFlash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1001;
+}
+
+.speedFlash::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(181, 240, 0, 0.12) 40%,
+            rgba(181, 240, 0, 0.22) 60%,
+            transparent 100%);
+    animation: speedFlash 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ── Modal container ── */
+.modal {
+    position: relative;
+    z-index: 1002;
+    width: 100%;
+    max-width: 860px;
+    max-height: 92vh;
+    background: #111111;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow:
+        0 0 0 1px rgba(181, 240, 0, 0.12),
+        0 40px 100px rgba(0, 0, 0, 0.7),
+        0 0 60px rgba(181, 240, 0, 0.05);
+}
+
+.kickIn {
+    animation: kickIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Top stripe ── */
+.topStripe {
+    background: linear-gradient(90deg,
+            #0d1500 0%,
+            #111111 40%,
+            #111111 60%,
+            #0d1500 100%);
+    border-bottom: 2px solid var(--accent);
+    padding: 0;
+}
+
+.stripeInner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1.5rem;
+}
+
+.brandBadge {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+}
+
+/* ── Tabs ── */
+.tabs {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 100px;
+    padding: 0.3rem;
+}
+
+.tab {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.4rem;
+    border-radius: 100px;
+    border: none;
+    background: transparent;
+    color: rgba(240, 237, 232, 0.4);
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.tab:hover {
+    color: var(--off-white);
+}
+
+.tabActive {
+    background: var(--accent);
+    color: #0d0d0d !important;
+    box-shadow: 0 4px 16px rgba(181, 240, 0, 0.3);
+}
+
+/* ── Close button ── */
+.closeBtn {
+    background: none;
+    border: none;
+    color: rgba(240, 237, 232, 0.4);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+    line-height: 1;
+}
+
+.closeBtn:hover {
+    color: var(--off-white);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Body (two-column) ── */
+.body {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    min-height: 0;
+}
+
+/* ── Left decor panel ── */
+.leftDecor {
+    width: 260px;
+    min-width: 260px;
+    background: linear-gradient(150deg, #0d1a00 0%, #090909 100%);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.decorGlow {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(181, 240, 0, 0.15) 0%, transparent 70%);
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.decorText {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.decorBig {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+    color: rgba(240, 237, 232, 0.06);
+    line-height: 0.88;
+    letter-spacing: 0.02em;
+    user-select: none;
+    transition: color 0.3s;
+}
+
+.decorTagline {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgba(240, 237, 232, 0.3);
+    text-align: center;
+    margin-top: 1.5rem;
+    white-space: pre-line;
+    line-height: 1.6;
+}
+
+/* ── Right form panel ── */
+.formPanel {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem 2.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Scrollbar for form panel */
+.formPanel::-webkit-scrollbar {
+    width: 3px;
+}
+
+.formPanel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.formPanel::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+.formHeader {
+    margin-bottom: 1.6rem;
+}
+
+.formTitle {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    letter-spacing: 0.05em;
+    color: var(--off-white);
+    margin-bottom: 0.35rem;
+}
+
+.formSub {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+/* ── Form elements ── */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.nameRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+}
+
+.group {
+    margin-bottom: 1.1rem;
+}
+
+.label {
+    display: block;
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.45rem;
+}
+
+.input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 9px;
+    padding: 0.75rem 1rem;
+    color: var(--off-white);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    outline: none;
+    transition: all 0.25s;
+}
+
+.input:focus {
+    border-color: var(--accent);
+    background: rgba(181, 240, 0, 0.04);
+    box-shadow: 0 0 0 3px rgba(181, 240, 0, 0.08);
+}
+
+.input::placeholder {
+    color: rgba(90, 90, 90, 0.8);
+}
+
+.inputError {
+    border-color: #ff4444 !important;
+}
+
+.errorMsg {
+    font-size: 0.75rem;
+    color: #ff4444;
+    margin-top: -0.7rem;
+    margin-bottom: 0.8rem;
+}
+
+.formRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    margin-bottom: 1.25rem;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 0.78rem;
+}
+
+.checkbox input {
+    accent-color: var(--accent);
+}
+
+.forgot {
+    color: var(--accent);
+    font-size: 0.75rem;
+    text-decoration: none;
+}
+
+.forgot:hover {
+    text-decoration: underline;
+}
+
+.submitBtn {
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 10px;
+    background: var(--accent);
+    color: #0d0d0d;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.submitBtn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.15) 50%, transparent 100%);
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+}
+
+.submitBtn:hover::after {
+    transform: translateX(100%);
+}
+
+.submitBtn:hover:not(:disabled) {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(181, 240, 0, 0.3);
+}
+
+.submitBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.switchText {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.switchLink {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    transition: text-decoration 0.2s;
+}
+
+.switchLink:hover {
+    text-decoration: underline;
+}
+
+/* ── Stagger animations ── */
+.stagger1 {
+    animation: staggerUp 0.5s 0.25s both;
+}
+
+.stagger2 {
+    animation: staggerUp 0.5s 0.32s both;
+}
+
+.stagger3 {
+    animation: staggerUp 0.5s 0.39s both;
+}
+
+.stagger4 {
+    animation: staggerUp 0.5s 0.46s both;
+}
+
+.stagger5 {
+    animation: staggerUp 0.5s 0.53s both;
+}
+
+/* ── Responsive: collapse left panel on small screens ── */
+@media (max-width: 680px) {
+    .leftDecor {
+        display: none;
+    }
+
+    .formPanel {
+        padding: 1.5rem;
+    }
+
+    .nameRow {
+        grid-template-columns: 1fr;
+    }
+
+    .modal {
+        max-height: 96vh;
+        border-radius: 16px;
+    }
+}

@@ -1,0 +1,405 @@
+.page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* ── Hero ── */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #161616 0%, #1c1c1c 100%);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.5rem 3rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.heroInner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.greeting {
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.name {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--off-white);
+    line-height: 1;
+}
+
+.wave {
+    display: inline-block;
+    animation: waveHand 1.4s ease-in-out infinite;
+    transform-origin: 70% 70%;
+}
+
+@keyframes waveHand {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(20deg);
+    }
+
+    40% {
+        transform: rotate(-8deg);
+    }
+
+    60% {
+        transform: rotate(20deg);
+    }
+
+    80% {
+        transform: rotate(-4deg);
+    }
+}
+
+.sub {
+    font-size: 0.9rem;
+    color: rgba(240, 237, 232, 0.55);
+    margin-top: 0.25rem;
+}
+
+.bookBtn {
+    margin-top: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: var(--accent);
+    color: #0d0d0d;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.2s;
+    width: fit-content;
+}
+
+.bookBtn:hover {
+    background: #ffffff;
+    transform: translateY(-2px);
+}
+
+.heroDecor {
+    flex-shrink: 0;
+}
+
+.bigIcon {
+    font-size: 7rem;
+    opacity: 0.12;
+    user-select: none;
+    filter: grayscale(1);
+}
+
+/* ── Stats ── */
+.statsRow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.statCard {
+    background: #161616;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    transition: border-color 0.2s;
+}
+
+.statCard:hover {
+    border-color: rgba(181, 240, 0, 0.3);
+}
+
+.statNum {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.statLabel {
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* ── Columns ── */
+.columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+/* ── Card ── */
+.card {
+    background: #161616;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cardTitleRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cardTitle {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--off-white);
+    letter-spacing: 0.05em;
+}
+
+.cardSub {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: -0.5rem;
+}
+
+.viewAll {
+    font-size: 0.78rem;
+    color: var(--accent);
+    transition: opacity 0.2s;
+}
+
+.viewAll:hover {
+    opacity: 0.7;
+}
+
+/* ── Sports Grid ── */
+.sportsGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.75rem;
+}
+
+.sportTile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0.5rem;
+    border-radius: 14px;
+    background: #1c1c1c;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.22s;
+    position: relative;
+    overflow: hidden;
+}
+
+.sportTile::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--sport-color);
+    opacity: 0;
+    transition: opacity 0.22s;
+}
+
+.sportTile:hover::before {
+    opacity: 0.1;
+}
+
+.sportTile:hover {
+    border-color: var(--sport-color);
+    transform: translateY(-3px);
+}
+
+.sportIcon {
+    font-size: 1.8rem;
+    position: relative;
+}
+
+.sportName {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--off-white);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    position: relative;
+}
+
+/* ── Upcoming List ── */
+.upcomingList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.upcomingItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1.1rem;
+    background: #1c1c1c;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+
+.upcomingLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.upcomingId {
+    font-size: 0.7rem;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.upcomingSport {
+    font-size: 0.82rem;
+    color: var(--off-white);
+    font-weight: 500;
+}
+
+.upcomingSlot {
+    font-size: 0.72rem;
+    color: var(--muted);
+}
+
+/* ── Badge ── */
+.badge {
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+}
+
+.upcoming {
+    background: rgba(181, 240, 0, 0.12);
+    color: var(--accent);
+    border: 1px solid rgba(181, 240, 0, 0.3);
+}
+
+/* ── Empty ── */
+.empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.empty span {
+    font-size: 2.5rem;
+}
+
+.emptyLink {
+    color: var(--accent);
+    font-size: 0.82rem;
+    margin-top: 0.25rem;
+}
+
+/* ── Quick Links ── */
+.linksRow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.linkCard {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    background: #161616;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    font-size: 0.84rem;
+    color: var(--off-white);
+    font-weight: 500;
+    transition: all 0.22s;
+}
+
+.linkCard:hover {
+    border-color: rgba(181, 240, 0, 0.35);
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.linkIcon {
+    font-size: 1.4rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .statsRow {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .columns {
+        grid-template-columns: 1fr;
+    }
+
+    .sportsGrid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .linksRow {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .page {
+        padding: 1.5rem 1rem 3rem;
+    }
+
+    .hero {
+        padding: 1.75rem 1.5rem;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .name {
+        font-size: 2rem;
+    }
+
+    .heroDecor {
+        display: none;
+    }
+
+    .statsRow {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sportsGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

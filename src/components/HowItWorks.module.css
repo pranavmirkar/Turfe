@@ -1,0 +1,102 @@
+.section {
+    padding: 8rem 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--off-white);
+    margin-bottom: 5rem;
+}
+
+.title em {
+    font-style: italic;
+    color: var(--accent);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    background: var(--bg-2);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: attr(data-step);
+    position: absolute;
+    top: -0.5rem;
+    right: 1rem;
+    font-family: var(--font-display);
+    font-size: 6rem;
+    color: rgba(181, 240, 0, 0.04);
+    line-height: 1;
+    pointer-events: none;
+}
+
+.card:hover {
+    border-color: rgba(181, 240, 0, 0.3);
+    transform: translateY(-6px);
+    background: var(--bg-3);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+.stepNum {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.stepName {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--off-white);
+    margin-bottom: 0.75rem;
+}
+
+.stepDesc {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: var(--muted);
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
